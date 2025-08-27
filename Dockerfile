@@ -9,8 +9,7 @@ RUN apt-get update && \
         git \
         python3 \
         jq \
-        sudo \
-        iproute2 && \
+        sudo && \
     rm -rf /var/lib/apt/lists/* && \
     # Verify ip exists
     [ -x "$(command -v ip)" ] || (echo "ERROR: ip command not found!" && exit 1)
@@ -26,6 +25,8 @@ RUN  \
 
 
 FROM docker.io/library/debian:latest
+
+RUN apt-get update && apt-get install -y --no-install-recommends iproute2
 
 COPY docker-start.sh docker-start.sh
 COPY --from=builder /n3n/apps/n3n-edge /usr/local/bin/n3n-edge
