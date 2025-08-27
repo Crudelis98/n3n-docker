@@ -10,8 +10,7 @@ RUN apt-get update && \
         python3 \
         jq \
         sudo \
-        iproute2 \
-        iproute && \
+        iproute2 && \
     rm -rf /var/lib/apt/lists/* && \
     # Verify ip exists
     [ -x "$(command -v ip)" ] || (echo "ERROR: ip command not found!" && exit 1)
