@@ -2,14 +2,7 @@ FROM docker.io/library/debian:latest AS builder
 
 ARG VERSION=3.4.4
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        autoconf \
-        git \
-        python3 \
-        jq \
-        sudo
+RUN apt-get update && apt-get install -y build-essential autoconf git python3 jq sudo
 
 WORKDIR /n3n
 
