@@ -9,10 +9,7 @@ RUN apt-get update && \
         git \
         python3 \
         jq \
-        sudo && \
-    rm -rf /var/lib/apt/lists/* && \
-    # Verify ip exists
-    [ -x "$(command -v ip)" ] || (echo "ERROR: ip command not found!" && exit 1)
+        sudo
 
 WORKDIR /n3n
 
