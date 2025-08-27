@@ -2,7 +2,19 @@ FROM docker.io/library/debian:latest AS builder
 
 ARG VERSION=3.4.4
 
-RUN apt-get update && apt-get install -y build-essential autoconf git python3 jq sudo iproute2
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        autoconf \
+        git \
+        python3 \
+        jq \
+        sudo \
+        iproute2 \
+        iproute && \
+    rm -rf /var/lib/apt/lists/* && \
+    # Verify ip exists
+    [ -x "$(command -v ip)" ] || (echo "ERROR: ip command not found!" && exit 1)
 
 WORKDIR /n3n
 
